@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from corona.presentation_layer.views.index_view import IndexView
 
 urlpatterns = [
-    path('', include('corona.urls')),
+    path('', IndexView.as_view(), name='index'), # include('corona.urls')
     path('admin/', admin.site.urls)
 ]
