@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrace pacienta</title>
+</head>
+<body>
+<center>
+    <b>Registrace pacienta</b>
+    <form method="POST">
+        {% csrf_token %}
+        <table class="form">{{ form }}</table>
+        <input type="submit" value="Registrovat se" class="button">
+    </form>
+</center>
+</body>
+</html>

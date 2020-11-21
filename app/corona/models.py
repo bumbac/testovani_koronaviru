@@ -4,7 +4,7 @@ from django.db import models
 class Patient(models.Model):
     name = models.TextField()
     surname = models.TextField()
-    birthid = models.IntegerField()
+    birthid = models.CharField(max_length=15)
     email = models.TextField()
     phone = models.TextField()
     address = models.TextField()
@@ -50,10 +50,12 @@ class CovidTest(models.Model):
 
 
 class CovidPass(models.Model):
-    testresult = [
+    TEST_RESULTS = [
         ('POS', 'Positive'),
         ('NEG', 'Negative')
     ]
+    testresult = models.CharField(max_length=3, choices=TEST_RESULTS, blank=True)
+    testdate = models.DateField(blank=True, null=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE, null=True, blank=True)
     covidtest = models.ForeignKey(CovidTest, on_delete=models.CASCADE, null=True, blank=True)
