@@ -20,6 +20,6 @@ from corona.presentation_layer.views.register_patient_view import RegisterPatien
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),  # include('corona.urls')
-    path('register', RegisterPatientView.as_view(), name='register'),
+    path('register/', RegisterPatientView.as_view(), name='register'),
     path('admin/', admin.site.urls)
 ]
