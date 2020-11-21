@@ -49,11 +49,11 @@ class CovidTest(models.Model):
     hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE)
 
 
-class Covidpass(models.Model):
+class CovidPass(models.Model):
     testresult = [
         ('POS', 'Positive'),
         ('NEG', 'Negative')
     ]
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE)
-    covidpass = models.ForeignKey(CovidTest, on_delete=models.CASCADE)
+    hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE, null=True, blank=True)
+    covidtest = models.ForeignKey(CovidTest, on_delete=models.CASCADE, null=True, blank=True)
