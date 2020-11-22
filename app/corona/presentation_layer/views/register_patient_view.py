@@ -23,7 +23,7 @@ class RegisterPatientView(View):
             print("Form is valid")
             user_handler.create_user(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             print("Saved user")
-            patient_handler.create_patient(name=form.cleaned_data['name'], surname=form.cleaned_data['surname'], birthid=form.cleaned_data['birthid'], email=form.cleaned_data['email'], phone=form.cleaned_data['phone'], address=form.cleaned_data['address'], user=user_data_acces.get_user(form.cleaned_data['username'])[0])
+            patient_handler.create_patient(name=form.cleaned_data['name'], surname=form.cleaned_data['surname'], birthid=form.cleaned_data['birthid'], email=form.cleaned_data['email'], phone=form.cleaned_data['phone'], address=form.cleaned_data['address'], user=user_data_acces.get_user(form.cleaned_data['username']))
             print("Saved patient")
             return HttpResponse('Great success, very nice!')
         else:

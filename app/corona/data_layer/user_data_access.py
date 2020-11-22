@@ -11,4 +11,4 @@ class UserDataAccess(UserDataAccessInterface):
         pass
 
     def get_user(self, username):
-        return User.objects.filter(username=username)
+        return User.objects.filter(username=username)[0]
