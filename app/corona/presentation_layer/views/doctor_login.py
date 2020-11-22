@@ -24,5 +24,5 @@ class DoctorLoginView(View):
                 login(request, user_data_access.get_user(form.cleaned_data['username']))
                 return HttpResponseRedirect(request.GET["next"] if "next" in request.GET else "/")
             else:
-                messages.error(request, "Spatne heslo")
+                messages.error(request, 'Spatne heslo')
         return render(request, 'corona/doctor_login.html', {'form': form})
