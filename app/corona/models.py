@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Patient(models.Model):
@@ -8,6 +9,7 @@ class Patient(models.Model):
     email = models.TextField()
     phone = models.TextField()
     address = models.TextField()
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
 
 class HygienicStation(models.Model):
