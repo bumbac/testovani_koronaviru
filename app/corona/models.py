@@ -37,12 +37,6 @@ class Quarantine(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
 
 
-class Reservation(models.Model):
-    createdate = models.DateTimeField()
-    deadline = models.DateTimeField()
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-
-
 class CovidTest(models.Model):
     waitdays = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -64,3 +58,10 @@ class CovidPass(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE, null=True, blank=True)
     covidtest = models.ForeignKey(CovidTest, on_delete=models.CASCADE, null=True, blank=True)
+
+
+class Reservation(models.Model):
+    createdate = models.DateTimeField()
+    deadline = models.DateTimeField()
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    covidpass = models.ForeignKey(CovidPass, on_delete=models.CASCADE, null=True)
