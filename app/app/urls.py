@@ -15,18 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
+
 from corona.presentation_layer.views.index_view import IndexView
 from corona.presentation_layer.views.register_patient_view import RegisterPatientView
 from corona.presentation_layer.views.doctor_view import DoctorView
-from django.contrib.admin.views.decorators import staff_member_required
 from corona.presentation_layer.views.logout_view import LogoutView
 from corona.presentation_layer.views.doctor_login import DoctorLoginView
+from corona.presentation_layer.views.reservation_view import ReservationView
+from corona.presentation_layer.views.patient_login_view import PatientLoginView
+from corona.presentation_layer.views.patient_view import PatientView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),  # include('corona.urls')
     path('register/', RegisterPatientView.as_view(), name='register'),
     path('doctor-login/', DoctorLoginView.as_view(), name='doctor-login'),
+    path('patient-login/', PatientLoginView.as_view(), name='patient-login'),
     path('admin/', admin.site.urls),
     path('doctor/', staff_member_required(DoctorView.as_view(), login_url='/doctor-login'), name='doctor'),
-    path('logout/', LogoutView.as_view(), name='logout')
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('reservation/', login_required(ReservationView.as_view(), login_url='/patient-login'), name='reservation'),
+    path('patient/', login_required(PatientView.as_view(), login_url='/patient-login'), name='patient')
 ]
