@@ -1,4 +1,5 @@
 from django import forms
+from corona.models import HygienicStation
 
 
 class LoginForm(forms.Form):
@@ -15,3 +16,7 @@ class PatientRegisterForm(forms.Form):
     email = forms.EmailField(label='Email', required=True)
     phone = forms.CharField(label='Telefonni cislo', required=True)
     address = forms.CharField(label='Adresa', required=True)
+
+
+class ReservationForm(forms.Form):
+    hygienic_station = forms.ModelChoiceField(HygienicStation.objects.all())

@@ -7,6 +7,11 @@
 <body>
 <center>
     <h1>Rezervace terminu</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table class="form">{{ form }}</table>
+        <input type="submit" value="Rezervovat termin" class="button">
+    </form>
     <a href="/logout">Odhlasit se</a>
 </center>
 </body>

@@ -16,6 +16,9 @@ class HygienicStation(models.Model):
     address = models.TextField()
     manager = models.TextField()
 
+    def __str__(self):
+        return self.address
+
 
 class Facility(models.Model):
     address = models.TextField()
