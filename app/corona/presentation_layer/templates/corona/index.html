@@ -2,18 +2,13 @@
 {% block title %}CoronaAgent{% endblock %}
 
 {% block page-title %}Uvodni stranka{% endblock %}
-
+    {% block head-block %}
+        {% if user.is_authenticated %}
+            <meta http-equiv="refresh" content="0; URL=/patient" />
+        {% endif %}
+    {% endblock %}
 {% block page-content %}
 {% if user.is_authenticated %}
-    <h2>
-        Vitejte, {{ user.username }}}
-    </h2>
-    <a href="/new-covidpass">Ziskat novy CovidPass</a>
-    <br>
-    <br>
-    <br>
-    <h2>Rezervace termínu</h2>
-    <a href="/reservation">Rezervace</a>
 {% else %}
     <a href="/patient-login">Přihlásit se</a>
     <br>

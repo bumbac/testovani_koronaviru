@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rezervace terminu</title>
-</head>
-<body>
-<center>
-    <h1>Rezervace terminu</h1>
+{% extends "./base.html" %}
+
+{% block title %}Rezervace terminu{% endblock %}
+{% block head-block %}
+    <script>
+        {% if messages %}
+            {% for message in messages %}
+                alert("{{message}}");
+            {% endfor %}
+        {% endif %}
+    </script>
+{% endblock %}
+
+{% block page-title %}Rezervace terminu{% endblock %}
+
+{% block page-content %}
     <form method="POST">
         {% csrf_token %}
         <table class="form">{{ form }}</table>
-        <input type="submit" value="Rezervovat termin" class="button">
+        <input type="submit" value="Rezervovat" class="button">
     </form>
-    <a href="/logout">Odhlasit se</a>
-</center>
-</body>
-</html>
+{% endblock %}
