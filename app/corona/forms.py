@@ -20,4 +20,5 @@ class PatientRegisterForm(forms.Form):
 
 
 class ReservationForm(forms.Form):
+    deadline = forms.DateTimeField()
     hygienic_station = forms.ModelChoiceField(HygienicStation.objects.all())
