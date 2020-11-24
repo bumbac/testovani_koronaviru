@@ -3,6 +3,9 @@ from corona.data_layer.reservation_data_access import ReservationDataAccess
 from datetime import datetime
 
 
+"""
+Implementation of ReservationHandler interface
+"""
 class ReservationHandler(ReservationHandlerInterface):
     def create_reservation(self, deadline, patient, covidpass):
         reservation_data_access = ReservationDataAccess()

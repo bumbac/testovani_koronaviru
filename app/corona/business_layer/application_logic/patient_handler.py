@@ -1,7 +1,9 @@
 from corona.business_layer.application_logic.interfaces.patient_handler_interface import PatientHandlerInterface
 from corona.data_layer.patient_data_access import PatientDataAccess
 
-
+"""
+Implementation of PatientHandler interface
+"""
 class PatientHandler(PatientHandlerInterface):
     def create_patient(self, name, surname, birthid, email, phone, address, user):
         patient_data_access = PatientDataAccess()

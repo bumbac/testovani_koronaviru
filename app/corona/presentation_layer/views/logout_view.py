@@ -1,3 +1,6 @@
+"""
+View controller for logout function
+"""
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.views import View

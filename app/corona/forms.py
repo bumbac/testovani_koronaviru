@@ -1,3 +1,6 @@
+"""
+Forms used in templates
+"""
 from django import forms
 from corona.models import HygienicStation, CovidTest
 

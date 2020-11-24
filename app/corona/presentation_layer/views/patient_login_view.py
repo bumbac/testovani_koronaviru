@@ -1,3 +1,6 @@
+"""
+View controller for patient's login page
+"""
 from django.shortcuts import render
 from django.views import View
 from corona.forms import LoginForm
