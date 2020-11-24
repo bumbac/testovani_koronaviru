@@ -23,5 +23,13 @@
     <center>
         {% block page-content %}{% endblock %}
     </center>
+<footer>
+    <center>
+        {% if user.is_authenticated %}
+            <b>Prihlaseny uzivatel: {{user.username}}</b><br>
+            <a href="/logout">Odhlasit se</a>
+        {% endif %}
+    </center>
+</footer>
 </body>
 </html>
