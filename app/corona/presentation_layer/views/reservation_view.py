@@ -13,6 +13,7 @@ class ReservationView(View):
     form = ReservationForm
 
     def get(self, request):
+        print(request.user.username)
         return render(request, 'corona/reservation.html', {'form': self.form})
 
     def post(self, request):

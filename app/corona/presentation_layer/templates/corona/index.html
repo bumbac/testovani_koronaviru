@@ -1,22 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CovidAgent</title>
-</head>
-<body>
-<center>
-    <h1>CovigAgent</h1>
-    <h2>Získání CovidPasu</h2>
-    <b>Zdarma</b><br>
-    V případě příznaků Covid kontaktujte svého lékaře<br><br>
-    <b>Samoplátce</b><br>
-    <a href="register" class="button">Registrace - Samoplátce</a>
+{% extends "./base.html" %}
+{% block title %}CoronaAgent{% endblock %}
+
+{% block page-title %}Uvodni stranka{% endblock %}
+
+{% block page-content %}
+{% if user.is_authenticated %}
+    <h2>
+        Vitejte, {{ user.username }}}
+    </h2>
+    <a href="/new-covidpass">Ziskat novy CovidPass</a>
     <br>
     <br>
     <br>
     <h2>Rezervace termínu</h2>
-    <a href="reservation">Rezervace</a>
-</center>
-</body>
-</html>
+    <a href="/reservation">Rezervace</a>
+{% else %}
+    <a href="/patient-login">Přihlásit se</a>
+    <br>
+    <br>
+    <h2>Získání CovidPasu</h2>
+    <b>Zdarma</b><br>
+    V případě příznaků Covid kontaktujte svého lékaře<br><br>
+    <b>Samoplátce</b><br>
+    <a href="/register">Registrace - Samoplátce</a>
+{% endif %}
+{% endblock %}
