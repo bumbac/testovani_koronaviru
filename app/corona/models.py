@@ -40,12 +40,10 @@ class Quarantine(models.Model):
 class CovidTest(models.Model):
     waitdays = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    testtype = [
-        ('PCR', 'PCR Test'),
-        ('AG', 'Antigen Test'),
-        ('AB', 'Antibodies Test')
-    ]
-    hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE)
+    type = models.TextField()
+
+    def __str__(self):
+        return self.type
 
 
 class CovidPass(models.Model):
@@ -57,7 +55,7 @@ class CovidPass(models.Model):
     testdate = models.DateField(blank=True, null=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE, null=True, blank=True)
-    covidtest = models.ForeignKey(CovidTest, on_delete=models.CASCADE, null=True, blank=True)
+    covidtest = models.ForeignKey(CovidTest, on_delete=models.CASCADE, null=True)
 
 
 class Reservation(models.Model):

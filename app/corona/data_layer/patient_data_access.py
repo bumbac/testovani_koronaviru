@@ -7,4 +7,7 @@ class PatientDataAccess(PatientDataAccessInterface):
     def add_patient(self, name, surname, birthid, email, phone, address, user):
         patient = Patient(name=name, surname=surname, birthid=birthid, email=email, phone=phone, address=address, user=user)
         patient.save()
+        return patient
+
+    def get_patient(self):
         return True
