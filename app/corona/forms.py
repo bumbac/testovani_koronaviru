@@ -21,7 +21,7 @@ class PatientRegisterForm(forms.Form):
 
 class ReservationForm(forms.Form):
     deadline = forms.DateTimeField(
-        input_formats=['%d/%m/%Y %H:%M'],
+        input_formats=['%d.%m.%Y %H:%M'],
         label='Termin'
     )
     hygienicstation = forms.ModelChoiceField(HygienicStation.objects.all(), label='Hygienicka stanice')

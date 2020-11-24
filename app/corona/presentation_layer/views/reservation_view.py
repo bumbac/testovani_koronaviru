@@ -5,8 +5,9 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 
-from corona.data_layer.reservation_data_access import ReservationDataAccess
-from corona.business_layer.application_logic.user_handler import UserHandler
+from corona.business_layer.application_logic.reservation_handler import ReservationHandler
+from corona.data_layer.covidpass_data_access import CovidpassDataAccess
+from corona.business_layer.application_logic.patient_handler import PatientHandler
 
 
 class ReservationView(View):
@@ -17,10 +18,13 @@ class ReservationView(View):
 
     def post(self, request):
         form = self.form(request.POST)
-        reservation_data_access = ReservationDataAccess()
+        reservation_handler = ReservationHandler()
+        covidpass_data_access = CovidpassDataAccess()
+        patient_handler = PatientHandler()
         if form.is_valid():
             print("Form valid")
-            reservation_data_access.add_reservation()
+            patient = patient_handler.get_patient(request.user)
+            reservation_handler.create_reservation(form.cleaned_data['deadline'], patient, covidpass_data_access.get_covidpass(patient))
         else:
             messages.error(request, form.errors)
             print(form['deadline'])

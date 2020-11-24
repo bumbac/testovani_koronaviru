@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 class ReservationHandler(ReservationHandlerInterface):
-    def create_reservation(self, deadline, covidpass):
+    def create_reservation(self, deadline, patient, covidpass):
         reservation_data_access = ReservationDataAccess()
-        reservation_data_access.add_reservation(datetime.now(), deadline, covidpass)
+        reservation_data_access.add_reservation(createdate=datetime.now().strftime('%Y-%m-%d %H:%M'), deadline=deadline, patient=patient, covidpass=covidpass)
         return True
