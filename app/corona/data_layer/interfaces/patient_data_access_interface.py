@@ -6,5 +6,6 @@ class PatientDataAccessInterface(ABC):
     def add_patient(self, name, surname, birthid, email, phone, address, user):
         pass
 
-    def get_patient(self):
+    @abstractmethod
+    def get_patient(self, user_id):
         pass

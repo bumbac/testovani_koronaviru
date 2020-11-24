@@ -11,6 +11,9 @@ class Patient(models.Model):
     address = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.name} {self.surname}'
+
 
 class HygienicStation(models.Model):
     address = models.TextField()

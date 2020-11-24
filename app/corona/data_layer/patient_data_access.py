@@ -9,5 +9,5 @@ class PatientDataAccess(PatientDataAccessInterface):
         patient.save()
         return patient
 
-    def get_patient(self):
-        return True
+    def get_patient(self, user_id):
+        return Patient.objects.filter(user=user_id)[0]

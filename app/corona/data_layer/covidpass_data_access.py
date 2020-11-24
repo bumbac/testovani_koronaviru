@@ -4,6 +4,6 @@ from corona.models import CovidPass
 
 class CovidpassDataAccess(CovidpassDataAccessInterface):
     def add_covidpass(self, patient, covidtest):
-        covidpass = CovidPass(patient, covidtest)
+        covidpass = CovidPass(patient=patient, covidtest=covidtest)
         covidpass.save()
         return True
