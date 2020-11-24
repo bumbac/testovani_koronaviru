@@ -26,6 +26,7 @@ from corona.presentation_layer.views.doctor_login import DoctorLoginView
 from corona.presentation_layer.views.reservation_view import ReservationView
 from corona.presentation_layer.views.patient_login_view import PatientLoginView
 from corona.presentation_layer.views.patient_view import PatientView
+from corona.presentation_layer.views.doctor_register_patient_view import DoctorRegisterPatientView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),  # include('corona.urls')
@@ -36,5 +37,6 @@ urlpatterns = [
     path('doctor/', staff_member_required(DoctorView.as_view(), login_url='/doctor-login'), name='doctor'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('reservation/', login_required(ReservationView.as_view(), login_url='/patient-login'), name='reservation'),
-    path('patient/', login_required(PatientView.as_view(), login_url='/patient-login'), name='patient')
+    path('patient/', login_required(PatientView.as_view(), login_url='/patient-login'), name='patient'),
+    path('doctor-register-patient/', staff_member_required(DoctorRegisterPatientView.as_view(), login_url='/doctor-login'), name='doctor-register-patient')
 ]
