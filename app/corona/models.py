@@ -9,7 +9,7 @@ class Patient(models.Model):
     email = models.TextField()
     phone = models.TextField()
     address = models.TextField()
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class HygienicStation(models.Model):
@@ -65,3 +65,17 @@ class Reservation(models.Model):
     deadline = models.DateTimeField()
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     covidpass = models.ForeignKey(CovidPass, on_delete=models.CASCADE, null=True)
+
+
+class Administrative(models.Model):
+    name = models.TextField()
+    surname = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Doctor(models.Model):
+    name = models.TextField()
+    surname = models.TextField()
+    title = models.CharField(max_length=5, blank=True)
+    address = models.TextField(blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
