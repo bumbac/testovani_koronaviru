@@ -12,7 +12,7 @@ In case of a localhost, the only requirement is django (`pip install django`), t
 **Doctor login**:
  - Username: Doctor1
  - Password: docpass1
- - url: /doctor-login
+ - url: /doctor
 
 **Patient login**
  - Username: samoplatce
