@@ -1,3 +1,6 @@
+"""
+View controller for doctor's index page
+"""
 from django.shortcuts import render
 from django.views import View
 

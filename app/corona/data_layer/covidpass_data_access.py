@@ -7,3 +7,7 @@ class CovidpassDataAccess(CovidpassDataAccessInterface):
         covidpass = CovidPass(patient=patient, covidtest=covidtest)
         covidpass.save()
         return True
+
+    def get_covidpass(self, patient):
+        print(f'patient: {patient}')
+        return CovidPass.objects.filter(patient=patient)[0]
