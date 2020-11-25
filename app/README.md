@@ -22,6 +22,6 @@ In case of a localhost, the only requirement is django (`pip install django`), t
  # Shortcut links:
   - /doctor - Doctor's site
   - /patient - Patient's site
-  - /patient-register - Registration for paying patients (Creates a patient-user and a valid CovidPass)
+  - /register - Registration for paying patients (Creates a patient-user and a valid CovidPass)
   - /reservation - Reservation of a CovidTest (with valid CovidPass)
   - /admin - Superuser interface
