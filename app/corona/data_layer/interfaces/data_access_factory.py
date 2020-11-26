@@ -6,17 +6,23 @@ from corona.data_layer.user_data_access import UserDataAccess
 
 
 class DataAccessFactory:
+    covidpass_data_access = CovidpassDataAccess()
+    covidtest_data_access = CovidtestDataAccess()
+    reservation_data_access = ReservationDataAccess()
+    patient_data_access = PatientDataAccess()
+    user_data_access = UserDataAccess()
+
     def _get_covidpass_data_access(self):
-        return CovidpassDataAccess()
+        return self.covidpass_data_access
 
     def _get_covidtest_data_access(self):
-        return CovidtestDataAccess()
+        return self.covidtest_data_access
 
     def _get_reservation_data_access(self):
-        return ReservationDataAccess()
+        return self.reservation_data_access
 
     def _get_patient_data_access(self):
-        return PatientDataAccess()
+        return self.patient_data_access
 
     def _get_user_data_access(self):
-        return UserDataAccess()
+        return self.user_data_access
