@@ -6,26 +6,25 @@ from django.views import View
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login
 
-from corona.business_layer.application_logic.user_handler import UserHandler
-from corona.business_layer.application_logic.patient_handler import PatientHandler
-from corona.business_layer.application_logic.covidpass_handler import CovidpassHandler
-from corona.data_layer.user_data_access import UserDataAccess
-from corona.data_layer.covidtest_data_access import CovidtestDataAccess
+from corona.data_layer.interfaces.data_access_factory import DataAccessFactory
+from corona.business_layer.application_logic.interfaces.handler_factory import HandlerFactory
 from corona.forms import PatientRegisterForm
 
 
 class RegisterPatientView(View):
     form = PatientRegisterForm
+    data_access_factory = DataAccessFactory()
+    handler_factory = HandlerFactory()
 
     def get(self, request):
         return render(request, 'corona/register_patient.html', dict(form=self.form))
 
     def post(self, request):
-        user_handler = UserHandler()
-        patient_handler = PatientHandler()
-        user_data_access = UserDataAccess()
-        covid_pass_handler = CovidpassHandler()
-        covidtest_data_access = CovidtestDataAccess()
+        user_handler = self.handler_factory.get_user_handler()
+        patient_handler = self.handler_factory.get_patient_handler()
+        user_data_access = self.data_access_factory.get_user_data_access()
+        covid_pass_handler = self.handler_factory.get_covidpass_handler()
+        covidtest_data_access = self.data_access_factory.get_covidtest_data_access()
         form = self.form(request.POST)
         if form.is_valid():
             user_handler.create_user(username=form.cleaned_data['username'], password=form.cleaned_data['password'])

@@ -8,22 +8,23 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 
-from corona.business_layer.application_logic.reservation_handler import ReservationHandler
-from corona.data_layer.covidpass_data_access import CovidpassDataAccess
-from corona.business_layer.application_logic.patient_handler import PatientHandler
+from corona.data_layer.interfaces.data_access_factory import DataAccessFactory
+from corona.business_layer.application_logic.interfaces.handler_factory import HandlerFactory
 
 
 class ReservationView(View):
     form = ReservationForm
+    data_access_factory = DataAccessFactory()
+    handler_factory = HandlerFactory()
 
     def get(self, request):
         return render(request, 'corona/reservation.html', {'form': self.form})
 
     def post(self, request):
         form = self.form(request.POST)
-        reservation_handler = ReservationHandler()
-        covidpass_data_access = CovidpassDataAccess()
-        patient_handler = PatientHandler()
+        reservation_handler = self.handler_factory.get_reservation_handler()
+        covidpass_data_access = self.data_access_factory.get_covidpass_data_access()
+        patient_handler = self.handler_factory.get_patient_handler()
         if form.is_valid():
             print("Form valid")
             patient = patient_handler.get_patient(request.user)

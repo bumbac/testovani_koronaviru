@@ -8,19 +8,21 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 
-from corona.data_layer.user_data_access import UserDataAccess
-from corona.business_layer.application_logic.user_handler import UserHandler
+from corona.data_layer.interfaces.data_access_factory import DataAccessFactory
+from corona.business_layer.application_logic.interfaces.handler_factory import HandlerFactory
 
 
 class PatientLoginView(View):
     form = LoginForm
+    data_access_factory = DataAccessFactory()
+    handler_factory = HandlerFactory()
 
     def get(self, request):
         return render(request, 'corona/patient_login.html', {'form': self.form})
 
     def post(self, request):
-        user_data_access = UserDataAccess()
-        user_handler = UserHandler()
+        user_data_access = self.data_access_factory.get_user_data_access()
+        user_handler = self.handler_factory.get_user_handler()
         form = self.form(request.POST)
         if form.is_valid():
             if user_handler.check_password(form.cleaned_data['username'], form.cleaned_data['password']):
