@@ -5,19 +5,19 @@ from corona.business_layer.application_logic.user_handler import UserHandler
 
 
 class HandlerFactory:
-    patient_handler = PatientHandler()
-    covidpass_handler = CovidpassHandler()
-    reservation_handler = ReservationHandler()
-    user_handler = UserHandler()
+    __patient_handler = PatientHandler()
+    __covidpass_handler = CovidpassHandler()
+    __reservation_handler = ReservationHandler()
+    __user_handler = UserHandler()
 
-    def _get_patient_handler(self):
-        return self.patient_handler
+    def get_patient_handler(self):
+        return self.__patient_handler
 
-    def _get_covidpass_handler(self):
-        return self.covidpass_handler
+    def get_covidpass_handler(self):
+        return self.__covidpass_handler
 
-    def _get_reservation_handler(self):
-        return self.reservation_handler
+    def get_reservation_handler(self):
+        return self.__reservation_handler
 
-    def _get_user_handler(self):
-        return self.user_handler
+    def get_user_handler(self):
+        return self.__user_handler
