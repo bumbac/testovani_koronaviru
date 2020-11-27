@@ -21,8 +21,8 @@ class Patient(models.Model):
 class HygienicStation(models.Model):
     address = models.TextField()
     manager = models.TextField()
-    openhour = models.FloatField()
-    closehour = models.FloatField()
+    openhour = models.TimeField()
+    closehour = models.TimeField()
 
     def __str__(self):
         return self.address
