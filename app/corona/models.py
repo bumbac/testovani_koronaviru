@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Patient(models.Model):
     name = models.TextField()
     surname = models.TextField()
-    birthid = models.CharField(max_length=15)
+    birthid = models.CharField(max_length=11)
     email = models.TextField()
     phone = models.TextField()
     address = models.TextField()
@@ -21,6 +21,8 @@ class Patient(models.Model):
 class HygienicStation(models.Model):
     address = models.TextField()
     manager = models.TextField()
+    openhour = models.FloatField()
+    closehour = models.FloatField()
 
     def __str__(self):
         return self.address
@@ -32,7 +34,7 @@ class Facility(models.Model):
 
 class Place(models.Model):
     bed = models.TextField()
-    standard = models.TextField(blank=True)
+    standard = models.TextField(blank=True, null=True)
     facility = models.ForeignKey(Facility, on_delete=models.CASCADE)
 
 
@@ -57,7 +59,7 @@ class CovidPass(models.Model):
         ('POS', 'Positive'),
         ('NEG', 'Negative')
     ]
-    testresult = models.CharField(max_length=3, choices=TEST_RESULTS, blank=True)
+    testresult = models.CharField(max_length=3, choices=TEST_RESULTS, blank=True, null=True)
     testdate = models.DateField(blank=True, null=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE, null=True, blank=True)
@@ -66,8 +68,7 @@ class CovidPass(models.Model):
 
 class Reservation(models.Model):
     createdate = models.DateTimeField()
-    deadline = models.DateTimeField()
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    deadline = models.DateTimeField(blank=True, null=True)
     covidpass = models.ForeignKey(CovidPass, on_delete=models.CASCADE, null=True)
 
 
@@ -80,6 +81,6 @@ class Administrative(models.Model):
 class Doctor(models.Model):
     name = models.TextField()
     surname = models.TextField()
-    title = models.CharField(max_length=5, blank=True)
-    address = models.TextField(blank=True)
+    title = models.CharField(max_length=5, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
