@@ -65,6 +65,11 @@ class CovidPass(models.Model):
     hygienicstation = models.ForeignKey(HygienicStation, on_delete=models.CASCADE, null=True, blank=True)
     covidtest = models.ForeignKey(CovidTest, on_delete=models.CASCADE, null=True)
 
+    def __str__(self):
+        if self.testresult is None:
+            return f'{self.covidtest} - Aktivní'
+        return f'{self.covidtest}, {self.testdate}, výsledek: {self.testresult}'
+
 
 class Reservation(models.Model):
     createdate = models.DateTimeField()
