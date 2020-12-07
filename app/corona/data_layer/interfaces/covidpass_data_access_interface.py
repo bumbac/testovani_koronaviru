@@ -7,5 +7,9 @@ class CovidpassDataAccessInterface(ABC):
         pass
 
     @abstractmethod
-    def get_covidpass(self, patient):
+    def get_active_covidpass(self, patient):
+        pass
+
+    @abstractmethod
+    def get_all_patients_covidpasses(self, patient):
         pass

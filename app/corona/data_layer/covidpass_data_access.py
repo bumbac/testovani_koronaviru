@@ -8,6 +8,13 @@ class CovidpassDataAccess(CovidpassDataAccessInterface):
         covidpass.save()
         return True
 
-    def get_covidpass(self, patient):
+    def get_active_covidpass(self, patient):
         print(f'patient: {patient}')
-        return CovidPass.objects.filter(patient=patient)[0]
+        covidpasses = self.get_all_patients_covidpasses(patient)
+        for covidpass in covidpasses:
+            if "Aktivní" in covidpass.__str__().split(' '):
+                return covidpass
+        return None
+
+    def get_all_patients_covidpasses(self, patient):
+        return CovidPass.objects.filter(patient=patient)
