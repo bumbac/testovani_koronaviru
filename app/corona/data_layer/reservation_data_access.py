@@ -3,8 +3,8 @@ from corona.models import Reservation
 
 
 class ReservationDataAccess(ReservationDataAccessInterface):
-    def add_reservation(self, createdate, deadline, patient, covidpass):
-        reservation = Reservation(createdate=createdate, deadline=deadline, patient=patient, covidpass=covidpass)
+    def add_reservation(self, createdate, deadline, covidpass):
+        reservation = Reservation(createdate=createdate, deadline=deadline, covidpass=covidpass)
         reservation.save()
         return True
 

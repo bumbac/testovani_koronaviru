@@ -9,7 +9,7 @@ Implementation of ReservationHandler interface
 class ReservationHandler(ReservationHandlerInterface):
     data_access_factory = DataAccessFactory()
 
-    def create_reservation(self, deadline, patient, covidpass):
+    def create_reservation(self, deadline, covidpass):
         reservation_data_access = self.data_access_factory.get_reservation_data_access()
-        reservation_data_access.add_reservation(createdate=datetime.now().strftime('%Y-%m-%d %H:%M'), deadline=deadline, patient=patient, covidpass=covidpass)
+        reservation_data_access.add_reservation(createdate=datetime.now().strftime('%Y-%m-%d %H:%M'), deadline=deadline, covidpass=covidpass)
         return True

@@ -28,7 +28,8 @@ class ReservationView(View):
         if form.is_valid():
             print("Form valid")
             patient = patient_handler.get_patient(request.user)
-            reservation_handler.create_reservation(form.cleaned_data['deadline'], patient, covidpass_data_access.get_covidpass(patient))
+            reservation_handler.create_reservation(form.cleaned_data['deadline'], covidpass_data_access.get_active_covidpass(patient))
+            return HttpResponseRedirect("/patient")
         else:
             messages.error(request, form.errors)
             print(form['deadline'])

@@ -5,7 +5,7 @@ Interface of ReservationHandler
 """
 class ReservationHandlerInterface(ABC):
     @abstractmethod
-    def create_reservation(self, deadline, patient, covidpass):
+    def create_reservation(self, deadline, covidpass):
         """
         :param deadline: Deadline
         :param patient: Patient
