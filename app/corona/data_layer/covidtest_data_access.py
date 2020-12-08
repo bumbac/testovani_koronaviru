@@ -3,6 +3,9 @@ from corona.models import CovidTest
 
 
 class CovidtestDataAccess(CovidtestDataAccessInterface):
+    """!
+    Implementation of CovidtestDataAccess interface
+    """
     def add_covidtest(self, waitdays, price, type):
         covidtest = CovidTest(waitdays, price, type)
         covidtest.save()

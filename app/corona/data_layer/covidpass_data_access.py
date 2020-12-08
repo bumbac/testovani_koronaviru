@@ -3,6 +3,9 @@ from corona.models import CovidPass
 
 
 class CovidpassDataAccess(CovidpassDataAccessInterface):
+    """!
+    Implementation of CovidpassDataAccess interface
+    """
     def add_covidpass(self, patient, covidtest):
         covidpass = CovidPass(patient=patient, covidtest=covidtest)
         covidpass.save()

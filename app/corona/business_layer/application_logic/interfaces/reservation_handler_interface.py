@@ -1,15 +1,17 @@
 from abc import ABC, abstractmethod
 
-"""
-Interface of ReservationHandler
-"""
+
 class ReservationHandlerInterface(ABC):
+    """!
+    Interface of ReservationHandler
+    """
     @abstractmethod
     def create_reservation(self, deadline, covidpass):
-        """
-        :param deadline: Deadline
-        :param patient: Patient
-        :param covidpass: Covidpass
-        :return: True if successful, otherwise False
+        """!
+        Method creates a new instance of Reservation
+        @param deadline: datetime, Deadline of the test
+        @param patient: Patient database identifier
+        @param covidpass: Covidpass database identifier
+        @return: True if successful, otherwise False
         """
         pass

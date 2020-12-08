@@ -1,6 +1,3 @@
-"""
-View controller for doctor's login page
-"""
 from django.shortcuts import render
 from django.views import View
 from corona.forms import LoginForm
@@ -13,14 +10,27 @@ from corona.business_layer.application_logic.interfaces.handler_factory import H
 
 
 class DoctorLoginView(View):
+    """!
+    View controller class that implements GET and POST methods for DoctorLoginView
+    """
     form = LoginForm
     data_access_factory = DataAccessFactory()
     handler_factory = HandlerFactory()
 
     def get(self, request):
+        """!
+        Method that handles GET request on the view
+        @param request: request
+        @return: render method, which renders the DoctorLogin html template with a form
+        """
         return render(request, 'corona/doctor_login.html', {'form': self.form})
 
     def post(self, request):
+        """!
+        Method that handles POST request on the view
+        @param request: request
+        @return: Redirect to Doctor's site, if the login was successful, otherwise render method which renders the same page again
+        """
         user_data_access = self.data_access_factory.get_user_data_access()
         user_handler = self.handler_factory.get_user_handler()
         form = self.form(request.POST)

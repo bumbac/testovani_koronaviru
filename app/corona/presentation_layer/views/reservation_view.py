@@ -1,6 +1,3 @@
-"""
-View controller for reservations page
-"""
 from django.shortcuts import render
 from django.views import View
 from corona.forms import ReservationForm
@@ -13,14 +10,27 @@ from corona.business_layer.application_logic.interfaces.handler_factory import H
 
 
 class ReservationView(View):
+    """!
+    View controller class that implements GET and POST methods for ReservationView
+    """
     form = ReservationForm
     data_access_factory = DataAccessFactory()
     handler_factory = HandlerFactory()
 
     def get(self, request):
+        """!
+        Method that handles GET request on the view
+        @param request: request
+        @return: render method, which renders the Reservation html template with a form
+        """
         return render(request, 'corona/reservation.html', {'form': self.form})
 
     def post(self, request):
+        """!
+        Method that handles POST request on the view
+        @param request: request
+        @return: Redirect to Patient's site, if the reservation was successful, otherwise render method which renders the same page again
+        """
         form = self.form(request.POST)
         reservation_handler = self.handler_factory.get_reservation_handler()
         covidpass_data_access = self.data_access_factory.get_covidpass_data_access()

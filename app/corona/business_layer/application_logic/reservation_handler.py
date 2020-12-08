@@ -3,10 +3,10 @@ from corona.data_layer.interfaces.data_access_factory import DataAccessFactory
 from datetime import datetime
 
 
-"""
-Implementation of ReservationHandler interface
-"""
 class ReservationHandler(ReservationHandlerInterface):
+    """!
+    Implementation of ReservationHandler interface
+    """
     data_access_factory = DataAccessFactory()
 
     def create_reservation(self, deadline, covidpass):

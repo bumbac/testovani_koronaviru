@@ -3,6 +3,9 @@ from corona.data_layer.interfaces.user_data_access_interface import UserDataAcce
 
 
 class UserDataAccess(UserDataAccessInterface):
+    """!
+    Implementation of UserDataAccess interface
+    """
     def add_user(self, username, password):
         user = User.objects.create_user(username=username, password=password)
         user.save()

@@ -1,10 +1,11 @@
 from corona.business_layer.application_logic.interfaces.covidpass_handler_interface import CovidpassHandlerInterface
 from corona.data_layer.interfaces.data_access_factory import DataAccessFactory
 
-"""
-Implementation of CovidpassHandler interface
-"""
+
 class CovidpassHandler(CovidpassHandlerInterface):
+    """!
+    Implementation of CovidpassHandler interface
+    """
     data_access_factory = DataAccessFactory()
 
     def create_covidpass(self, patient, covidtest):

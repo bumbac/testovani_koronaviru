@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 
 
 class Patient(models.Model):
+    """!
+    Class of Patient database model, using Django's ORM implementation
+    """
     name = models.TextField()
     surname = models.TextField()
     birthid = models.CharField(max_length=11)
@@ -19,6 +22,9 @@ class Patient(models.Model):
 
 
 class HygienicStation(models.Model):
+    """!
+    Class of HygienicStation database model, using Django's ORM implementation
+    """
     address = models.TextField()
     manager = models.TextField()
     openhour = models.TimeField()
@@ -29,16 +35,25 @@ class HygienicStation(models.Model):
 
 
 class Facility(models.Model):
+    """!
+    Class of Facility database model, using Django's ORM implementation
+    """
     address = models.TextField()
 
 
 class Place(models.Model):
+    """!
+    Class of Place database model, using Django's ORM implementation
+    """
     bed = models.TextField()
     standard = models.TextField(blank=True, null=True)
     facility = models.ForeignKey(Facility, on_delete=models.CASCADE)
 
 
 class Quarantine(models.Model):
+    """!
+    Class of Quarantine database model, using Django's ORM implementation
+    """
     startdate = models.DateField()
     duration = models.IntegerField()
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
@@ -46,6 +61,9 @@ class Quarantine(models.Model):
 
 
 class CovidTest(models.Model):
+    """!
+    Class of CovidTest database model, using Django's ORM implementation
+    """
     waitdays = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     type = models.TextField()
@@ -55,6 +73,9 @@ class CovidTest(models.Model):
 
 
 class CovidPass(models.Model):
+    """!
+    Class of CovidPass database model, using Django's ORM implementation
+    """
     TEST_RESULTS = [
         ('POS', 'Positive'),
         ('NEG', 'Negative')
@@ -72,18 +93,27 @@ class CovidPass(models.Model):
 
 
 class Reservation(models.Model):
+    """!
+    Class of Reservation database model, using Django's ORM implementation
+    """
     createdate = models.DateTimeField()
     deadline = models.DateTimeField(blank=True, null=True)
     covidpass = models.ForeignKey(CovidPass, on_delete=models.CASCADE, null=True)
 
 
 class Administrative(models.Model):
+    """!
+    Class of Administrative database model, using Django's ORM implementation
+    """
     name = models.TextField()
     surname = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Doctor(models.Model):
+    """!
+    Class of Doctor database model, using Django's ORM implementation
+    """
     name = models.TextField()
     surname = models.TextField()
     title = models.CharField(max_length=5, blank=True, null=True)

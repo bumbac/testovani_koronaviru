@@ -1,6 +1,3 @@
-"""
-View controller for patient's registration page
-"""
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect
@@ -12,14 +9,27 @@ from corona.forms import PatientRegisterForm
 
 
 class RegisterPatientView(View):
+    """!
+    View controller class that implements GET and POST methods for RegisterPatientView
+    """
     form = PatientRegisterForm
     data_access_factory = DataAccessFactory()
     handler_factory = HandlerFactory()
 
     def get(self, request):
+        """!
+        Method that handles GET request on the view
+        @param request: request
+        @return: render method, which renders the RegisterPatient html template with a form
+        """
         return render(request, 'corona/register_patient.html', dict(form=self.form))
 
     def post(self, request):
+        """!
+        Method that handles POST request on the view
+        @param request: request
+        @return: Redirect to Patient's site, if the registration was successful, otherwise render method which renders the same page again
+        """
         user_handler = self.handler_factory.get_user_handler()
         patient_handler = self.handler_factory.get_patient_handler()
         user_data_access = self.data_access_factory.get_user_data_access()

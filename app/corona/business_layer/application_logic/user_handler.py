@@ -1,10 +1,11 @@
 from corona.business_layer.application_logic.interfaces.user_handler_interface import UserHandlerInterface
 from corona.data_layer.interfaces.data_access_factory import DataAccessFactory
 
-"""
-Implementation of UserHandler interface
-"""
+
 class UserHandler(UserHandlerInterface):
+    """!
+    Implementation of UserHandler interface
+    """
     data_access_factory = DataAccessFactory()
 
     def create_user(self, username, password):

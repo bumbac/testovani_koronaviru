@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import *
 
+"""!
+Django's admin panel
+"""
 admin.site.register(Patient)
 admin.site.register(HygienicStation)
 admin.site.register(Facility)

@@ -4,6 +4,9 @@ from corona.models import Patient
 
 
 class PatientDataAccess(PatientDataAccessInterface):
+    """!
+    Implementation of PatientDataAccess interface
+    """
     def add_patient(self, name, surname, birthid, email, phone, address, user):
         patient = Patient(name=name, surname=surname, birthid=birthid, email=email, phone=phone, address=address, user=user)
         patient.save()

@@ -1,14 +1,16 @@
 from abc import ABC, abstractmethod
 
-"""
-Interface of CovidpassHandler
-"""
+
 class CovidpassHandlerInterface(ABC):
+    """!
+    Interface of CovidpassHandler
+    """
     @abstractmethod
     def create_covidpass(self, patient, covidtest):
-        """
-        :param patient: patient_id
-        :param covidtest: covidtest_id
-        :return: True if successful, otherwise False
+        """!
+        Method creates a new CovidPass instance
+        @param patient: Patient database identifier
+        @param covidtest: Covidtest database identifier
+        @return: True if successful, otherwise false
         """
         pass

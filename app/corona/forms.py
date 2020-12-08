@@ -1,16 +1,19 @@
-"""
-Forms used in templates
-"""
 from django import forms
 from corona.models import HygienicStation, CovidTest
 
 
 class LoginForm(forms.Form):
+    """!
+    Form for logging in, using Django's form implementation class
+    """
     username = forms.CharField(label='Uzivatelske jmeno', required=True)
     password = forms.CharField(label='Heslo', widget=forms.PasswordInput, required=True)
 
 
 class PatientRegisterForm(forms.Form):
+    """!
+    Form for patient registration, using Django's form implementation class
+    """
     username = forms.CharField(label='Uzivatelske jmeno', required=True)
     password = forms.CharField(label='Heslo', widget=forms.PasswordInput, required=True)
     name = forms.CharField(label='Jmeno', required=True)
@@ -23,6 +26,9 @@ class PatientRegisterForm(forms.Form):
 
 
 class ReservationForm(forms.Form):
+    """!
+    Form for reservation, using Django's form implementation class
+    """
     deadline = forms.DateTimeField(
         input_formats=['%d.%m.%Y %H:%M'],
         label='Termin'
