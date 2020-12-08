@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from corona.data_layer.models import *
 
 admin.site.register(Patient)
 admin.site.register(HygienicStation)

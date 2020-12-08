@@ -2,7 +2,7 @@
 Forms used in templates
 """
 from django import forms
-from corona.models import HygienicStation, CovidTest
+from corona.data_layer.models import HygienicStation, CovidTest
 
 
 class LoginForm(forms.Form):

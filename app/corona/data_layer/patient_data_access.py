@@ -1,6 +1,5 @@
-from django.contrib.auth.models import User
 from corona.data_layer.interfaces.patient_data_access_interface import PatientDataAccessInterface
-from corona.models import Patient
+from corona.data_layer.models import Patient
 
 
 class PatientDataAccess(PatientDataAccessInterface):
