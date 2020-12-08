@@ -1,4 +1,4 @@
-"""
+"""!
 Models representing database
 """
 from django.db import models

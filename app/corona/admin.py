@@ -1,5 +1,5 @@
 from django.contrib import admin
-from corona.data_layer.models import *
+from corona.models import *
 
 """!
 Django's admin panel

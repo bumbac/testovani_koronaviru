@@ -1,5 +1,5 @@
 from corona.data_layer.interfaces.patient_data_access_interface import PatientDataAccessInterface
-from corona.data_layer.models import Patient
+from corona.models import Patient
 
 
 class PatientDataAccess(PatientDataAccessInterface):
