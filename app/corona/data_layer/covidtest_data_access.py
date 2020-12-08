@@ -1,5 +1,5 @@
 from corona.data_layer.interfaces.covidtest_data_access_interface import CovidtestDataAccessInterface
-from corona.models import CovidTest
+from corona.data_layer.models import CovidTest
 
 
 class CovidtestDataAccess(CovidtestDataAccessInterface):

@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login
 
 from corona.data_layer.interfaces.data_access_factory import DataAccessFactory
-from corona.business_layer.application_logic.interfaces.handler_factory import HandlerFactory
+from corona.business_layer.handlers.interfaces.handler_factory import HandlerFactory
 from corona.forms import PatientRegisterForm
 
 

@@ -1,5 +1,5 @@
 from corona.data_layer.interfaces.reservation_data_access_interface import ReservationDataAccessInterface
-from corona.models import Reservation
+from corona.data_layer.models import Reservation
 
 
 class ReservationDataAccess(ReservationDataAccessInterface):
